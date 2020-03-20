@@ -35,10 +35,6 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Question question = questions.get(position);
         holder.resource.setImageResource(question.getResourceId());
-        holder.answerChoice_1.setText(question.getAnswerChoice_1());
-        holder.answerChoice_2.setText(question.getAnswerChoice_2());
-        holder.answerChoice_3.setText(question.getAnswerChoice_3());
-        holder.answerChoice_4.setText(question.getAnswerChoice_4());
         holder.entitledQuestion.setText(question.getEntitledQuestion());
 
         holder.itemView.setTag(question);
@@ -68,20 +64,12 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHo
     class ViewHolder extends RecyclerView.ViewHolder {
 
         final ImageView resource;
-        final TextView answerChoice_1;
-        final TextView answerChoice_2;
-        final TextView answerChoice_3;
-        final TextView answerChoice_4;
         final TextView entitledQuestion;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             resource = itemView.findViewById(R.id.resourceImageView);
-            answerChoice_1 = itemView.findViewById(R.id.choiceAnswerTextView1);
-            answerChoice_2 = itemView.findViewById(R.id.choiceAnswerTextView2);
-            answerChoice_3 = itemView.findViewById(R.id.choiceAnswerTextView3);
-            answerChoice_4 = itemView.findViewById(R.id.choiceAnswerTextView4);
             entitledQuestion = itemView.findViewById(R.id.entitledQuestionTextView);
         }
     }

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/rootItem"
     android:layout_width="match_parent"
-    android:layout_height="150dp">
+    android:layout_height="70dp">
 
     <ImageView
         android:id="@+id/resourceImageView"
@@ -14,69 +14,16 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.16"
         app:srcCompat="@drawable/real_me" />
-
-    <TextView
-        android:id="@+id/choiceAnswerTextView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
-        app:layout_constraintBottom_toBottomOf="@+id/choiceAnswerTextView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/choiceAnswerTextView2"
-        app:layout_constraintTop_toTopOf="@+id/resourceImageView"
-        app:layout_constraintVertical_bias="1.0"
-        tools:text="test" />
-
-    <TextView
-        android:id="@+id/choiceAnswerTextView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        app:layout_constraintEnd_toStartOf="@+id/choiceAnswerTextView1"
-        app:layout_constraintHorizontal_chainStyle="spread_inside"
-        app:layout_constraintStart_toEndOf="@+id/resourceImageView"
-        app:layout_constraintTop_toTopOf="@+id/resourceImageView"
-        tools:text="test" />
-
-    <TextView
-        android:id="@+id/choiceAnswerTextView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/resourceImageView"
-        app:layout_constraintEnd_toStartOf="@+id/choiceAnswerTextView4"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="spread_inside"
-        app:layout_constraintStart_toEndOf="@+id/resourceImageView"
-        app:layout_constraintStart_toStartOf="@+id/choiceAnswerTextView2"
-        app:layout_constraintTop_toBottomOf="@+id/choiceAnswerTextView2"
-        app:layout_constraintVertical_bias="1.0"
-        tools:text="test" />
-
-    <TextView
-        android:id="@+id/choiceAnswerTextView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/resourceImageView"
-        app:layout_constraintEnd_toEndOf="@+id/choiceAnswerTextView1"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/choiceAnswerTextView3"
-        app:layout_constraintTop_toTopOf="@+id/choiceAnswerTextView3"
-        app:layout_constraintVertical_bias="0.0"
-        tools:text="test" />
 
     <TextView
         android:id="@+id/entitledQuestionTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="@+id/choiceAnswerTextView4"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/resourceImageView"
-        app:layout_constraintTop_toBottomOf="@+id/resourceImageView"
+        app:layout_constraintBottom_toBottomOf="@+id/resourceImageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/resourceImageView"
+        app:layout_constraintTop_toTopOf="@+id/resourceImageView"
+        app:layout_constraintVertical_bias="0.516"
         tools:text="Comment sont fait les bébés ?" />
 </androidx.constraintlayout.widget.ConstraintLayout>
