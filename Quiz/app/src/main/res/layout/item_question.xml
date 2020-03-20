@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/rootItem"
     android:layout_width="match_parent"
-    android:layout_height="70dp">
+    android:layout_height="70dp"
+    android:background="#98C3E6">
 
     <ImageView
         android:id="@+id/resourceImageView"
@@ -20,6 +21,9 @@
         android:id="@+id/entitledQuestionTextView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="@+id/resourceImageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/resourceImageView"

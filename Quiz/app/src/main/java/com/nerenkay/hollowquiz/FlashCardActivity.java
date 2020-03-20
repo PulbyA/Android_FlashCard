@@ -59,17 +59,18 @@ public class FlashCardActivity extends AppCompatActivity {
             nextButton.setText(ANSWER_VALIDATION);
             indexTextView.setText(questionPos + 1 + " / "+ questions.size());
 
-            //RadioButtons Création
+            //RadioButtons dynamically created inside the RadioGroup
             for (int i = 0; i < question.getAnswerChoices().size(); i++) {
                 RadioButton rdbtn = new RadioButton(this);
                 rdbtn.setText(question.getAnswerChoices().get(i).toString());
                 answerRadioGroup.addView(rdbtn, i);
             }
 
-            Log.i("FlashCardActivity", answerRadioGroup.getChildCount() + "");
-
         }
 
+        //OnClick that change with the button, if the answer is validated, the button will change
+        // into a next question button, to go to the next question on the list, and in the end of
+        //the list, it will change to print the statistics of the quiz
 
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,6 +132,7 @@ public class FlashCardActivity extends AppCompatActivity {
             }
         });
 
+        // This is to view the picture in a bigger screen if you click on it
         questionImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

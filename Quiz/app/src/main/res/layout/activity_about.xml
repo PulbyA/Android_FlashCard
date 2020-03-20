@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#98C3E6"
     tools:context=".AboutActivity">
 
     <TextView
@@ -11,6 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,6 +23,7 @@
         android:id="@+id/pseudoTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="@+id/realNameTextView"
         app:layout_constraintStart_toStartOf="@+id/realNameTextView"
         app:layout_constraintTop_toBottomOf="@+id/realNameTextView"
@@ -30,6 +33,7 @@
         android:id="@+id/versionTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/versionWordingTextView5"
         app:layout_constraintHorizontal_bias="0.508"
@@ -43,6 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="96dp"
         android:text="Créée par :"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="@+id/realNameTextView"
         app:layout_constraintHorizontal_bias="0.523"
         app:layout_constraintStart_toStartOf="@+id/realNameTextView"
@@ -53,6 +58,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Version :"
+        android:textColor="#000000"
         app:layout_constraintBottom_toTopOf="@+id/versionTextView"
         app:layout_constraintEnd_toEndOf="@+id/createTextView"
         app:layout_constraintStart_toStartOf="@+id/createTextView" />

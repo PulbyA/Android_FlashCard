@@ -17,5 +17,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
-        tools:srcCompat="@drawable/hollow_knight" />
+        tools:srcCompat="@drawable/game_cover" />
 </androidx.constraintlayout.widget.ConstraintLayout>

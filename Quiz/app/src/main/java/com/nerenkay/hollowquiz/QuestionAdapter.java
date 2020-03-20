@@ -57,7 +57,6 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHo
                 Question q = (Question) v.getTag();
                 Intent intent = new Intent(context, FlashCardActivity.class);
                 intent.putExtra("aQuestion", q);
-                //intent.putParcelableArrayListExtra("aArrayListQuestion", questions);
                 context.startActivity(intent);
                 break;
         }

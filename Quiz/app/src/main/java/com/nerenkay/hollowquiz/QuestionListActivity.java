@@ -24,6 +24,7 @@ public class QuestionListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_list);
 
+        //Get the difficulty
         Intent srcIntent = getIntent();
         isPlayed = srcIntent.getBooleanExtra("aIsPlayed", false);
         difficulty = srcIntent.getStringExtra("aDifficulty");
@@ -41,7 +42,6 @@ public class QuestionListActivity extends AppCompatActivity {
                 "Moyen"
         ));
 
-
         ArrayList<String> answers_2 = new ArrayList<String>();
         answers_2.add("La santé");
         answers_2.add("Le nombre d’ennemis tués");
@@ -53,7 +53,6 @@ public class QuestionListActivity extends AppCompatActivity {
                 R.drawable.masque_de_sante,
                 "Moyen"
         ));
-
 
         ArrayList<String> answers_3 = new ArrayList<String>();
         answers_3.add("À reconstituer sa santé");
@@ -150,7 +149,6 @@ public class QuestionListActivity extends AppCompatActivity {
                 "Difficile"
         ));
 
-
         ArrayList<String> answers_15 = new ArrayList<String>();
         answers_15.add("À faire office de grappin");
         answers_15.add("À crocheter les coffres");
@@ -162,6 +160,7 @@ public class QuestionListActivity extends AppCompatActivity {
                 "Moyen"
         ));
 
+        //Put all the questions with defined difficulty on the list that will be send
         if(difficulty != null && !difficulty.isEmpty()){
             for(Question question : questions){
                 if(question.getDifficulty().equals(difficulty)){
@@ -173,6 +172,10 @@ public class QuestionListActivity extends AppCompatActivity {
         else {
             questionToSend = questions;
         }
+
+        // If the Play button is pressed, load the questions list, then load the first question on
+        // the list after the randomization
+        // Else, load the recycler View with all questions
         if(isPlayed){
             Intent intent = new Intent(QuestionListActivity.this, FlashCardActivity.class);
             Collections.shuffle(questionToSend);

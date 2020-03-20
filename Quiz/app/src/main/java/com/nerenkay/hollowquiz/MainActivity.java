@@ -22,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final TextView welcomeTextView = findViewById(R.id.welcomeTextView) ;
         final Button playButton = findViewById(R.id.playButton);
         final Button questionListButton = findViewById(R.id.questionListButton);
         final Button aboutButton = findViewById(R.id.aboutButton);
@@ -48,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    //This method will create a Dialog to choose your quiz difficulty with radioButtons, and send
+    //this difficulty to the questionList
 
     public void createDialogDifficulty(){
 
@@ -82,6 +84,9 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
+
+    // This is just a method to rapidly change to an other view if you don't have any extra to put
+    // in the intent
 
     public void changeActivity(Class activity){
         Intent intent = new Intent(MainActivity.this, activity);
