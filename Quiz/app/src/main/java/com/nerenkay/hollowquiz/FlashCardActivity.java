@@ -1,32 +1,35 @@
 package com.nerenkay.hollowquiz;
 
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class FlashCardActivity extends AppCompatActivity {
 
+    //Init the few Strings used multiple times in code as const
     final String ANSWER_VALIDATION = "Valider la réponse";
     final String NEXT_QUESTION = "Question suivante";
     final String SEE_RESULTS = "Voir les résultats";
 
     RadioButton selectedRadioButton;
-    ArrayList<RadioButton> radioButtons = new ArrayList<RadioButton>();
+    int countGoodAnswer;
+    ArrayList<Question> questions;
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
@@ -34,22 +37,27 @@ public class FlashCardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flash_card);
 
+
         final RadioGroup answerRadioGroup = findViewById(R.id.answerRadioGroup);
         final TextView questionTextView = findViewById(R.id.questionTextView);
         final ImageView questionImageView = findViewById(R.id.questionImageView);
         final TextView resultTextView = findViewById(R.id.resultTextView);
         final TextView answerTextView = findViewById(R.id.answerTextView);
         final Button nextButton = findViewById(R.id.nextButton);
+        final TextView indexTextView = findViewById(R.id.indexTextView);
 
         Intent srcIntent = getIntent();
         final Question question = srcIntent.getParcelableExtra("aQuestion");
-        final ArrayList<Question> questions = srcIntent.getParcelableArrayListExtra("aArrayListQuestion");
+        questions = srcIntent.getParcelableArrayListExtra("aArrayListQuestion");
+        if(questions == null ){ questions = new ArrayList<>(); questions.add(question);}
         final int questionPos = srcIntent.getIntExtra("aQuestionPos", 0);
+        final int userScore = srcIntent.getIntExtra("aUserScore", 0);
 
         if (question != null) {
             questionTextView.setText(question.getEntitledQuestion());
-            questionImageView.setImageResource(question.getResourceId());
+            questionImageView.setImageResource(question.getImageID());
             nextButton.setText(ANSWER_VALIDATION);
+            indexTextView.setText(questionPos + 1 + " / "+ questions.size());
 
             Log.i("FlashCardActivity", answerRadioGroup.getChildCount() + "");
 
@@ -76,8 +84,10 @@ public class FlashCardActivity extends AppCompatActivity {
                     try {
                         if (selectedRadioButton.getText().equals(question.getAnswer())) {
                             resultTextView.setText("VICTOIRE");
+                            countGoodAnswer = userScore + 1;
                         } else {
                             resultTextView.setText("défaite");
+                            countGoodAnswer = userScore;
                         }
 
 
@@ -103,7 +113,9 @@ public class FlashCardActivity extends AppCompatActivity {
                                 .show();
                     }
                 } else if (nextButton.getText().equals(SEE_RESULTS)) {
-                    Intent intent = new Intent(FlashCardActivity.this, MainActivity.class);
+                    Intent intent = new Intent(FlashCardActivity.this, StatisticsActivity.class);
+                    intent.putExtra("aUserScore", countGoodAnswer);
+                    intent.putExtra("aTotalQuestions", questions.size());
                     startActivity(intent);
                     finish();
                     Log.i("FlashCardActivity", SEE_RESULTS);
@@ -114,11 +126,21 @@ public class FlashCardActivity extends AppCompatActivity {
                     intent.putExtra("aQuestion", questions.get(newPos));
                     intent.putParcelableArrayListExtra("aArrayListQuestion", questions);
                     intent.putExtra("aQuestionPos", newPos);
+                    intent.putExtra("aUserScore", countGoodAnswer);
                     startActivity(intent);
                     finish();
 
                     Log.i("FlashCardActivity", NEXT_QUESTION);
                 }
+            }
+        });
+
+        questionImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FlashCardActivity.this, ZoomImageActivity.class);
+                intent.putExtra("aZoomImageId", question.getImageID());
+                startActivity(intent);
             }
         });
     }

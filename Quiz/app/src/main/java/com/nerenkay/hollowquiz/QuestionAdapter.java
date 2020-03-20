@@ -18,8 +18,8 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHo
 
     public ArrayList<Question> questions;
 
-    public QuestionAdapter (ArrayList<Question> currencies){
-        this.questions = currencies;
+    public QuestionAdapter (ArrayList<Question> questions){
+        this.questions = questions;
     }
 
     @NonNull
@@ -34,7 +34,9 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Question question = questions.get(position);
-        holder.resource.setImageResource(question.getResourceId());
+        if(question.getImageID() != null){
+            holder.imageID.setImageResource(question.getImageID());
+        }
         holder.entitledQuestion.setText(question.getEntitledQuestion());
 
         holder.itemView.setTag(question);
@@ -55,7 +57,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHo
                 Question q = (Question) v.getTag();
                 Intent intent = new Intent(context, FlashCardActivity.class);
                 intent.putExtra("aQuestion", q);
-                intent.putParcelableArrayListExtra("aArrayListQuestion", questions);
+                //intent.putParcelableArrayListExtra("aArrayListQuestion", questions);
                 context.startActivity(intent);
                 break;
         }
@@ -63,13 +65,13 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHo
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        final ImageView resource;
+        final ImageView imageID;
         final TextView entitledQuestion;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            resource = itemView.findViewById(R.id.resourceImageView);
+            imageID = itemView.findViewById(R.id.resourceImageView);
             entitledQuestion = itemView.findViewById(R.id.entitledQuestionTextView);
         }
     }

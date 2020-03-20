@@ -11,12 +11,14 @@ public class Question implements Parcelable {
     private final String entitledQuestion;
     private ArrayList<String> answerChoices = new ArrayList<>();
     private final String answer;
-    private final int resourceId;
+    private final Integer imageID;
+    private String difficulty;
 
     public Question(String entitledQuestion,
                     ArrayList<String> answerChoices,
                     String answer,
-                    int resourceId
+                    Integer imageID,
+                    String difficulty
     ){
         this.answerChoices = answerChoices;
 
@@ -24,16 +26,16 @@ public class Question implements Parcelable {
 
         this.entitledQuestion = entitledQuestion;
         this.answer = answer;
-        this.resourceId = resourceId;
-
-
+        this.imageID = imageID;
+        this.difficulty = difficulty;
     }
 
     protected Question(Parcel in) {
         entitledQuestion = in.readString();
         answerChoices = in.createStringArrayList();
         answer = in.readString();
-        resourceId = in.readInt();
+        imageID = in.readInt();
+        difficulty = in.readString();
     }
 
     @Override
@@ -41,7 +43,8 @@ public class Question implements Parcelable {
         dest.writeString(entitledQuestion);
         dest.writeStringList(answerChoices);
         dest.writeString(answer);
-        dest.writeInt(resourceId);
+        dest.writeInt(imageID);
+        dest.writeString(difficulty);
     }
 
     @Override
@@ -73,8 +76,10 @@ public class Question implements Parcelable {
         return answer;
     }
 
-    public int getResourceId(){
-        return resourceId;
+    public Integer getImageID(){
+        return imageID;
     }
+
+    public String getDifficulty(){return difficulty; }
 
 }
