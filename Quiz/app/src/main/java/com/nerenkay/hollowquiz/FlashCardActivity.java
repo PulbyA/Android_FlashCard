@@ -59,11 +59,7 @@ public class FlashCardActivity extends AppCompatActivity {
             nextButton.setText(ANSWER_VALIDATION);
             indexTextView.setText(questionPos + 1 + " / "+ questions.size());
 
-            Log.i("FlashCardActivity", answerRadioGroup.getChildCount() + "");
-
             //RadioButtons Création
-
-            Log.i("FlashCardActivity", question.getAnswerChoices().size() + "ghghgfhghgf");
             for (int i = 0; i < question.getAnswerChoices().size(); i++) {
                 RadioButton rdbtn = new RadioButton(this);
                 rdbtn.setText(question.getAnswerChoices().get(i).toString());
